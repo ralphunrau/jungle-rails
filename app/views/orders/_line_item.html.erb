@@ -1,0 +1,21 @@
+<article>
+  <h4>
+  <%= order.line_items[0].product.image %>
+  </h4>
+
+  <article class="product-detail">
+    <%= image_tag order.line_items[0].product.image.url, class: 'main-img' %>
+    <div>
+      <h1><%= order.line_items[0].product.name %></h1>
+      <p><%= order.line_items[0].product.description %></p>
+    </div>
+  </article>
+
+  <h4>
+  Order total: <%= humanized_money_with_symbol (order.total_cents / 100.0) %>
+  </h4>
+  <h4>
+  User Email: <%= order.email %>
+  </h4>
+
+</article>
