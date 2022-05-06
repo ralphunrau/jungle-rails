@@ -1,3 +1,14 @@
+<section class="admin-dashboard-index">
 
-<h1>Total Products: <%= @product_count %></h1>
-<h1>Total Categories: <%= @category_count %></h1>
+  <header class="page-header">
+    <h1>Admin &raquo; Dashboard</h1>
+  </header>
+
+  <h1>
+    Total Products: <a href="/admin/products"><%= @product_count %></a>
+  </h1>
+  <h1>
+    Total Categories: <%= @category_count %>
+  </h1>
+
+</section>
