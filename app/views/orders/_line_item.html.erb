@@ -1,21 +1,31 @@
-<article>
-  <h4>
-  <%= order.line_items[0].product.image %>
-  </h4>
+<section class="products-show">
 
-  <article class="product-detail">
-    <%= image_tag order.line_items[0].product.image.url, class: 'main-img' %>
-    <div>
-      <h1><%= order.line_items[0].product.name %></h1>
-      <p><%= order.line_items[0].product.description %></p>
+<header class="page-header">
+    <h1></h1>
+  </header>
+
+<article class="product-detail">
+
+    <div class="row">
+
+      <div class="col-sm-4">
+        <%= image_tag product.image.url, class: 'main-img' %>
+      </div>
+
+      <div class="col-sm-8">
+        <dl class="dl-horizontal">
+          <dt>Name</dt>
+          <dd><%= product.name %></dd>
+          <dt>Description</dt>
+          <dd><%= product.description %></dd>
+          <dt>Quantity</dt>
+          <dd><%= product.quantity %></dd>
+          <dt>Price</dt>
+          <dd><%= product.price %></dd>
+        </dl>
+      </div>
     </div>
+
   </article>
 
-  <h4>
-  Order total: <%= humanized_money_with_symbol (order.total_cents / 100.0) %>
-  </h4>
-  <h4>
-  User Email: <%= order.email %>
-  </h4>
-
-</article>
+  </section>
