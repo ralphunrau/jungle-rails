@@ -122,5 +122,17 @@ RSpec.describe User, type: :model do
         expect(User.authenticate_with_credentials('  tester@example.com  ', 'password')).to eq(@user)
       end
     end
+
+    context 'with wrong upper/lower case' do
+      it 'returns a user' do
+        @user = User.create(
+          name: 'Test',
+          email: 'tester@example.com',
+          password: 'password',
+          password_confirmation: 'password'
+        )
+        expect(User.authenticate_with_credentials('tEsTeR@exAmple.coM', 'password')).to eq(@user)
+      end
+    end
   end
 end

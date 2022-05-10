@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   def self.authenticate_with_credentials email, password
     email = email.strip
+    email = email.downcase
     @user = self.find_by_email(email)
 
     if @user && @user.authenticate(password)
