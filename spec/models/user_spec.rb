@@ -75,8 +75,51 @@ RSpec.describe User, type: :model do
           password: 'pass',
           password_confirmation: 'pass'
         )
-        puts @user.errors.full_messages
         expect(@user.errors.full_messages).to eq(["Password is too short (minimum is 8 characters)"])
+      end
+    end
+  end
+
+  describe '.authenticate_with_credentials' do
+    context 'with correct credentials' do
+      it 'returns a user' do
+        @user = User.create(
+          name: 'Test',
+          email: 'tester@example.com',
+          password: 'password',
+          password_confirmation: 'password'
+        )
+        expect(User.authenticate_with_credentials('tester@example.com', 'password')).to eq(@user)
+      end
+    end
+
+    context 'with incorrect password' do
+      it 'returns nil' do
+        @user = User.create(
+          name: 'Test',
+          email: 'tester@example.com',
+          password: 'password',
+          password_confirmation: 'password'
+        )
+        expect(User.authenticate_with_credentials('tester@example.com', 'incorrect_password')).to eq(nil)
+      end
+    end
+
+    context 'with unregistered email' do
+      it 'returns nil' do
+        expect(User.authenticate_with_credentials('incorrect_tester@example.com', 'password')).to eq(nil)
+      end
+    end
+
+    context 'with whitespace around email' do
+      it 'returns a user' do
+        @user = User.create(
+          name: 'Test',
+          email: 'tester@example.com',
+          password: 'password',
+          password_confirmation: 'password'
+        )
+        expect(User.authenticate_with_credentials('  tester@example.com  ', 'password')).to eq(@user)
       end
     end
   end

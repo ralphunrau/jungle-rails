@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_length_of :password, :minimum => 8
 
   def self.authenticate_with_credentials email, password
+    email = email.strip
     @user = self.find_by_email(email)
 
     if @user && @user.authenticate(password)
