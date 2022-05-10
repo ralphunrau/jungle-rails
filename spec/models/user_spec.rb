@@ -8,8 +8,8 @@ RSpec.describe User, type: :model do
         @user = User.create(
           name: 'Test',
           email: 'tester@example.com',
-          password: 'pass',
-          password_confirmation: 'pass'
+          password: 'password',
+          password_confirmation: 'password'
         )
         expect(@user.errors.full_messages).to eq([])
       end
@@ -20,9 +20,9 @@ RSpec.describe User, type: :model do
         @user = User.create(
           name: 'Test',
           email: 'tester@example.com',
-          password_confirmation: 'pass'
+          password_confirmation: 'password'
         )
-        expect(@user.errors.full_messages).to eql(["Password can't be blank"])
+        expect(@user.errors.full_messages).to eql(["Password can't be blank", "Password is too short (minimum is 8 characters)"])
       end
     end
     context 'no password confirmation field' do
@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
         @user = User.create(
           name: 'Test',
           email: 'tester@example.com',
-          password: 'pass'
+          password: 'password'
         )
         expect(@user.errors.full_messages).to eql(["Password confirmation can't be blank"])
       end
@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
         @user = User.create(
           name: 'Test',
           email: 'tester@example.com',
-          password: 'pass',
+          password: 'password',
           password_confirmation: 'incorrect_pass'
         )
         expect(@user.errors.full_messages).to eql(["Password confirmation doesn't match Password"])
@@ -53,17 +53,30 @@ RSpec.describe User, type: :model do
         @user1 = User.create(
           name: 'Test',
           email: 'tester@example.com',
-          password: 'pass',
-          password_confirmation: 'pass'
+          password: 'password',
+          password_confirmation: 'password'
         )
         @user2 = User.create(
+          name: 'Test',
+          email: 'tester@example.com',
+          password: 'password',
+          password_confirmation: 'password'
+        )
+        expect(@user1.errors.full_messages).to eq([])
+        expect(@user2.errors.full_messages).to eq(["Email has already been taken"])
+      end
+    end
+
+    context 'password must be minimum length' do
+      it 'returns an error for a password shorter than 8' do
+        @user = User.create(
           name: 'Test',
           email: 'tester@example.com',
           password: 'pass',
           password_confirmation: 'pass'
         )
-        expect(@user1.errors.full_messages).to eq([])
-        expect(@user2.errors.full_messages).to eq(["Email has already been taken"])
+        puts @user.errors.full_messages
+        expect(@user.errors.full_messages).to eq(["Password is too short (minimum is 8 characters)"])
       end
     end
   end
