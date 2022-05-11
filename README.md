@@ -5,16 +5,16 @@ A mini e-commerce application built with Rails 6.1 for purposes of teaching Rail
 # Project Screenshots
 
 ## Screenshot of the homepage view
-!["Screenshot of the homepage view"]()
+!["Screenshot of the homepage view"](https://github.com/ralphunrau/jungle-rails/blob/master/docs/HomePageView.png?raw=true)
 
 ## Screenshot of a category view
-!["Screenshot of a category view"]()
+!["Screenshot of a category view"](https://github.com/ralphunrau/jungle-rails/blob/master/docs/CategoryView.png?raw=true)
 
 ## Screenshot of the cart view
-!["Screenshot of the cart view"]()
+!["Screenshot of the cart view"](https://github.com/ralphunrau/jungle-rails/blob/master/docs/CartView.png?raw=true)
 
 ## Screenshot of the payment view
-!["Screenshot of the payment view"]()
+!["Screenshot of the payment view"](https://github.com/ralphunrau/jungle-rails/blob/master/docs/PaymentView.png?raw=true)
 
 ## Setup
 
