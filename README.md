@@ -7,7 +7,9 @@ A mini e-commerce application built with Rails 6.1. The projects purpose for me 
   * Apply previous learning tactics to research and become familiar with a new paradigm, language and framework
   * Throw myself in a simulation of the real world where feature and bug-fix requests are listed instead of step-by-step instructions on how to implement a solution
 
-As a user of this application, you can create an account and order any plants we have available to you! A typical ordering processs would look like searching for the plants you want via category, adding them to your cart, and paying for them online with your card!
+As a user of this application, you can create an account and order any plants we have available to you! A typical ordering processs would look like searching for the plants you want via category, adding them to your cart, and paying for them online with your card.
+
+As an admin of this application, admin users can list and create new categories. Admins can add new products using the new category.
 
 # Project Screenshots
 
