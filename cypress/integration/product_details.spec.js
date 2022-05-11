@@ -11,7 +11,7 @@ describe("Navigation", () => {
   it("The products should be clickable and render product page", () => {
     cy.get('.products article > a > img').first().click()
 
-    cy.get('.product-detail')
+    cy.contains('Giant Tea')
   })
 
 });
